@@ -1,14 +1,14 @@
 import { Animation } from './animation';
-import { HTML5CanvasRenderer } from './renderer';
-import { SocketIoController, MockController } from './controller';
+import { HTML5CanvasRenderer as Renderer } from './renderer';
+import { NativeController as Controller } from './controller';
 import { NoteGroup } from './note';
-import { PianoVisualizer, WaveVisualizer } from './visualizer';
+import { PianoVisualizer as Visualizer } from './visualizer';
 
 function main() {
-  const renderer = new HTML5CanvasRenderer;
+  const renderer = new Renderer;
   const animation = new Animation(renderer);
-  const controller = new SocketIoController("midi");
-  const visualizer = new PianoVisualizer(renderer, 30);
+  const visualizer = new Visualizer(renderer, 30);
+  const controller = new Controller;
   const notes = new NoteGroup(controller, visualizer);
 
   animation.add(notes);
