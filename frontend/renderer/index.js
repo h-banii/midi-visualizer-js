@@ -10,7 +10,7 @@ export class HTML5CanvasRenderer {
     this.ctx.lineWidth = 2;
     this.ctx.fillStyle = "#ffe06e"
     this.ctx.strokeStyle = "#ffa530"
-    this.ctx.globalAlpha = 0.6;
+    this.ctx.globalAlpha = window.getComputedStyle(document.body).getPropertyValue('--midi-alpha');
   }
 
   set lineWidth(value) {
@@ -23,8 +23,8 @@ export class HTML5CanvasRenderer {
   }
 
   colorFromCss(fill, stroke) {
-    this.ctx.fillStyle = window.getComputedStyle(document.body, null).getPropertyValue(fill);
-    this.ctx.strokeStyle = window.getComputedStyle(document.body, null).getPropertyValue(stroke);
+    this.ctx.fillStyle = window.getComputedStyle(document.body).getPropertyValue(fill);
+    this.ctx.strokeStyle = window.getComputedStyle(document.body).getPropertyValue(stroke);
   }
 
   begin() {

@@ -4,6 +4,8 @@
 
   --midi-black-fill: #ffc06e;
   --midi-black-stroke: #d16928;
+
+  --midi-alpha: 0.9;
 }
 
 canvas {
