@@ -2,7 +2,7 @@
   "name": "midi-visualizer",
   "version": "1.0.0",
   "scripts": {
-    "start": "node backend/websocket.js",
+    "start": "vite frontend & sleep 1 && node backend/websocket.js",
     "dev": "vite frontend",
     "build": "vite build frontend",
     "preview": "vite preview frontend",
