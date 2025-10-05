@@ -3,7 +3,7 @@ import { viteSingleFile } from "vite-plugin-singlefile"
 
 export default defineConfig({
   plugins: [viteSingleFile()],
-  root: 'src',
+  root: 'frontend',
   build: {
     outDir: '../dist',
     emptyOutDir: true

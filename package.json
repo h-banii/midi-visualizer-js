@@ -4,9 +4,9 @@
   "scripts": {
     "start": "node --env-file='./.env' backend/obs-websocket.js",
     "ws": "node backend/websocket.js",
-    "dev": "vite frontend",
-    "build": "vite build frontend",
-    "preview": "vite preview frontend",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "h-banii",
