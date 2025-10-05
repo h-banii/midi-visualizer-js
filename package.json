@@ -2,7 +2,8 @@
   "name": "midi-visualizer",
   "version": "1.0.0",
   "scripts": {
-    "start": "vite frontend & sleep 1 && node backend/websocket.js",
+    "start": "node --env-file='./.env' backend/obs-websocket.js",
+    "ws": "node backend/websocket.js",
     "dev": "vite frontend",
     "build": "vite build frontend",
     "preview": "vite preview frontend",
@@ -14,6 +15,7 @@
   "dependencies": {
     "@julusian/midi": "^3.6.1",
     "jzz": "^1.9.6",
+    "obs-websocket-js": "^5.0.6",
     "readline-sync": "^1.4.10",
     "vite": "^5.0.12",
     "vite-plugin-singlefile": "^1.0.0",
