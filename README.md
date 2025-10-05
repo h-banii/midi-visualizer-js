@@ -15,6 +15,7 @@ Since OBS doesn't allow browser sources to use the web MIDI API, we can use OBS
 websockets as a workaround for now:
 
 - Add a browser source in OBS with this url: `https://h-banii.github.io/midi-visualizer-js/`
+- Install npm dependencies: `npm i`
 - Start the OBS websocket server: `npm start` (then type the MIDI port and press `enter`)
 
 ```console
@@ -26,6 +27,9 @@ $ npm start
 
 MIDI Input port: 1 # type the port number (1 in my case) and press ENTER
 ```
+
+> [!NOTE]
+> You need [NodeJS](https://nodejs.org/en) to run those npm commands.
 
 ## Customizing
 
