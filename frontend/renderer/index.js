@@ -8,8 +8,8 @@ export class HTML5CanvasRenderer {
     document.body.appendChild(canvas);
     this.ctx = canvas.getContext("2d");
     this.ctx.lineWidth = 2;
-    this.ctx.fillStyle = "#ffc4e3"
-    this.ctx.strokeStyle = "#ff3b5b"
+    this.ctx.fillStyle = "#ffe06e"
+    this.ctx.strokeStyle = "#ffa530"
     this.ctx.globalAlpha = 0.6;
   }
 
