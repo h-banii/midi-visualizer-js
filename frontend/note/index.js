@@ -1,10 +1,52 @@
 export class Note {
+  static cache = {};
+
   constructor({ keyNumber, velocity }, dismiss) {
     this.keyNumber = keyNumber;
     this.velocity = velocity;
     this.startTime = 0;
     this.endTime = 0;
     this.dismiss = dismiss;
+
+    if (!(keyNumber in Note.cache)) {
+      Note.save(keyNumber);
+    }
+
+    Object.assign(this, Note.cache[keyNumber]);
+  }
+
+  static save(key) {
+    let keyIndex = key - 21
+
+    let chromatic_note = keyIndex % 12;
+    let octave = (keyIndex / 12) | 0;
+    let white_width = 1;
+    let black_width = 3 / 5;
+
+    let [position, natural] = [0, true];
+
+    if (chromatic_note == 0) [position, natural] = [0, true];
+    else if (chromatic_note == 1) [position, natural] = [4 / 5, false];
+    else if (chromatic_note == 2) [position, natural] = [1, true];
+    else if (chromatic_note == 3) [position, natural] = [2, true];
+    else if (chromatic_note == 4)
+      [position, natural] = [2 + black_width, false];
+    else if (chromatic_note == 5) [position, natural] = [3, true];
+    else if (chromatic_note == 6) [position, natural] = [3 + 4 / 5, false];
+    else if (chromatic_note == 7) [position, natural] = [4, true];
+    else if (chromatic_note == 8) [position, natural] = [5, true];
+    else if (chromatic_note == 9)
+      [position, natural] = [5 + black_width, false];
+    else if (chromatic_note == 10) [position, natural] = [6, true];
+    else if (chromatic_note == 11) [position, natural] = [6 + 4 / 5, false];
+
+    const total = 49 + 3;
+
+    Note.cache[key] = {
+      position: (position + octave * 7) / total,
+      width: (natural ? white_width : black_width) / total,
+      natural,
+    };
   }
 
   off() {

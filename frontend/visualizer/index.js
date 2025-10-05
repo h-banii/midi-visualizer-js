@@ -7,16 +7,21 @@ export class PianoVisualizer {
     this.direction = -1;
     this.radius = 5;
   }
-  
+
   draw(note) {
     const length = note.startTime - note.endTime;
     this.renderer.begin();
+    if (note.natural) {
+      this.renderer.colorFromCss("--midi-white-fill", "--midi-white-stroke");
+    } else {
+      this.renderer.colorFromCss("--midi-black-fill", "--midi-black-stroke");
+    }
     this.renderer.rect(
-      (note.keyNumber - 21) * this.width,
+      note.position * this.renderer.width,
       this.baseY + this.direction * note.endTime * this.height,
-      this.width,
+      note.width * this.renderer.width,
       this.direction * length * this.height,
-      this.radius
+      this.radius,
     );
     this.renderer.fill();
     this.renderer.stroke();
@@ -32,15 +37,15 @@ export class WaveVisualizer {
     this.speed = 50;
     this.radius = 5;
   }
-  
+
   draw(note) {
     const length = note.startTime - note.endTime;
     const key = note.keyNumber - 21;
     this.renderer.begin();
     this.renderer.circle(
-      this.baseX + this.diameter * Math.sin(key/88 * 2 * Math.PI),
-      this.baseY + this.diameter * Math.cos(key/88 * 2 * Math.PI),
-      (note.startTime + note.endTime ** 2) * this.speed
+      this.baseX + this.diameter * Math.sin((key / 88) * 2 * Math.PI),
+      this.baseY + this.diameter * Math.cos((key / 88) * 2 * Math.PI),
+      (note.startTime + note.endTime ** 2) * this.speed,
     );
     this.renderer.lineWidth = length * this.speed;
     this.renderer.stroke();
