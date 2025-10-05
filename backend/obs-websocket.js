@@ -7,8 +7,8 @@ class Server {
     this.socket = new OBSWebSocket();
 
     this.socket.connect(
-      process.env.OBS_WS_URL,
-      process.env.OBS_WS_PASSWORD,
+      process.env?.OBS_WS_URL ?? "ws://127.0.0.1:4455",
+      process.env?.OBS_WS_PASSWORD,
       {},
     );
 
