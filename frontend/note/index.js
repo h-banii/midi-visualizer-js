@@ -15,8 +15,28 @@ export class Note {
     Object.assign(this, Note.cache[keyNumber]);
   }
 
+  static isNatural(key) {
+    let keyIndex = key - 21;
+    let chromatic_note = keyIndex % 12;
+
+    return [
+      true,
+      false,
+      true,
+      true,
+      false,
+      true,
+      false,
+      true,
+      true,
+      false,
+      true,
+      false,
+    ][chromatic_note];
+  }
+
   static save(key) {
-    let keyIndex = key - 21
+    let keyIndex = key - 21;
 
     let chromatic_note = keyIndex % 12;
     let octave = (keyIndex / 12) | 0;
@@ -103,7 +123,7 @@ export class NoteGroup {
   }
 
   update(dt) {
-    for (const keyNumber in this.notes) {
+    const update = (keyNumber) => {
       const notes = this.notes[keyNumber];
       for (let i = notes.length - 1; i >= 0; --i) {
         const note = notes[i];
@@ -112,6 +132,18 @@ export class NoteGroup {
         if (note.endTime > this.ttl) {
           notes.splice(i, 1);
         }
+      }
+    };
+
+    for (const keyNumber in this.notes) {
+      if (Note.isNatural(keyNumber)) {
+        update(keyNumber);
+      }
+    }
+
+    for (const keyNumber in this.notes) {
+      if (!Note.isNatural(keyNumber)) {
+        update(keyNumber);
       }
     }
   }
