@@ -2,14 +2,14 @@
 
 Basic web midi visualizer.
 
-# Browser
+## Browser
 
 Just open https://h-banii.github.io/midi-visualizer-js/ in a browser with
 [MIDI API
 support](https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API) and it
 should work.
 
-# OBS
+## OBS
 
 Since OBS doesn't allow browser sources to use the web MIDI API, we can use OBS
 websockets as a workaround for now:
@@ -27,7 +27,7 @@ $ npm start
 MIDI Input port: 1 # type the port number (1 in my case) and press ENTER
 ```
 
-# Customizing
+## Customizing
 
 You can use CSS variables to customize it.
 
@@ -46,7 +46,7 @@ You can use CSS variables to customize it.
 }
 ```
 
-# Developing
+## Developing
 
 Web frontend
 
