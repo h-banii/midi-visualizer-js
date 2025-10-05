@@ -1,13 +1,18 @@
 export class WebsocketController extends EventTarget {
-  constructor(service = "midi") {
-    super()
+  constructor() {
+    super();
 
     this.socket = new WebSocket("ws://localhost:8080");
 
-    socket.addEventListener("message", (event) => {
-      console.log("Message from server ", event.data);
+    this.socket.addEventListener("message", (recv) => {
+      const message = JSON.parse(recv.data);
+      this.dispatchEvent(
+        new CustomEvent(message.event, {
+          detail: message.data,
+        }),
+      );
     });
   }
 }
 
-export default SocketIoController;
+export default WebsocketController;
