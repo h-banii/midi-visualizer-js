@@ -17,6 +17,16 @@ export class HTML5CanvasRenderer {
     this.ctx.lineWidth = value;
   }
 
+  color(fill, stroke) {
+    this.ctx.fillStyle = fill
+    this.ctx.strokeStyle = stroke
+  }
+
+  colorFromCss(fill, stroke) {
+    this.ctx.fillStyle = window.getComputedStyle(document.body, null).getPropertyValue(fill);
+    this.ctx.strokeStyle = window.getComputedStyle(document.body, null).getPropertyValue(stroke);
+  }
+
   begin() {
     this.ctx.beginPath();
   }
